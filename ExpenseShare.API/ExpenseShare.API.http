@@ -1,0 +1,6 @@
+@ExpenseShare.API_HostAddress = http://localhost:5260
+
+GET {{ExpenseShare.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

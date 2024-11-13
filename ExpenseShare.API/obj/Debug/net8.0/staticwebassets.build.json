@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "+ojLr+Rc58WLzBtOma9R3A+MBNwMEkXmvst81/naGi4=",
+  "Source": "ExpenseShare.API",
+  "BasePath": "_content/ExpenseShare.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
