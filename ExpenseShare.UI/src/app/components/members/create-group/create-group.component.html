@@ -1,0 +1,75 @@
+<div class="container mt-4 d-flex justify-content-center">
+  <div class="card shadow p-4 mb-5 w-xl-60 w-lg-70 w-md-80 w-sm-90 w-xs-100">
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4 mx-5 px-5">Create New Group</h1>
+      <form #createGroupForm="ngForm" (ngSubmit)="onSubmit(createGroupForm)">
+        <div class="mb-3">
+          <label for="name" class="form-label">Group Name</label>
+          <input type="text" id="name" name="name" [(ngModel)]="group.name" class="form-control" required />
+          <div *ngIf="createGroupForm.submitted && !group.name" class="text-danger">
+            Group name is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" name="description" [(ngModel)]="group.description" class="form-control" required></textarea>
+          <div *ngIf="createGroupForm.submitted && !group.description" class="text-danger">
+            Description is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Members</label>
+          <div *ngFor="let member of members; let i = index" class="row g-3 align-items-center">
+            <div class="col-md-10 mb-1">
+              <input type="text" placeholder="Member Name" [(ngModel)]="member.email" name="memberName{{i}}" class="form-control" required />
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-danger" (click)="removeMember(i)">Remove</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary mt-3" (click)="addMember()">Add Member</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="createGroupForm.invalid">Create Group</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container mt-4">
+  <h1>Create New Group</h1>
+  <form #createGroupForm="ngForm" (ngSubmit)="onSubmit(createGroupForm)">
+    <div class="mb-3">
+      <label for="name" class="form-label">Group Name</label>
+      <input type="text" id="name" name="name" [(ngModel)]="group.name" class="form-control" required />
+      <div *ngIf="createGroupForm.submitted && !group.name" class="text-danger">
+        Group name is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" name="description" [(ngModel)]="group.description" class="form-control" required></textarea>
+      <div *ngIf="createGroupForm.submitted && !group.description" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Members</label>
+      <div *ngFor="let member of members; let i = index" class="row g-3 align-items-center">
+        <div class="col-md-5">
+          <input type="text" placeholder="Member Name" [(ngModel)]="member.email" name="memberName{{i}}" class="form-control" required />
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-danger" (click)="removeMember(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-secondary mt-3" (click)="addMember()">Add Member</button>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="createGroupForm.invalid">Create Group</button>
+  </form>
+</div> -->

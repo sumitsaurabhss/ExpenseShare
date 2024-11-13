@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body .row {
+  margin-bottom: 10px;
+}
+
+.translucent-line {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.page-background {
+  background-image: url('https://th.bing.com/th/id/OIP.eVask5a0YLOxbXXyIol0xwAAAA?w=241&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-background {
+  background-image: url('https://th.bing.com/th/id/OIP.8MsrrWaikiOfzvBQa0RAAQHaEJ?w=293&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7'); 
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  z-index: 0;
+}

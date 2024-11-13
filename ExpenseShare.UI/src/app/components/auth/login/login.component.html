@@ -1,0 +1,25 @@
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+  <div class="card card-bg shadow p-4 w-xl-60 w-lg-70 w-md-80 w-sm-90 w-xs-100">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-5 mx-5">Login Form</h2>
+      <form #form="ngForm" (ngSubmit)="userLogin()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" [(ngModel)]="userCredentials.email" class="form-control" required #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger alert">
+            <div *ngIf="email.errors?.['required']">Email is required.</div>
+            <div *ngIf="email.errors?.['email']">Email is not correct.</div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="userCredentials.password" class="form-control" required #password="ngModel">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+            <div *ngIf="password.errors?.['required']">Password is required</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-success mt-5 mb-2 w-100" [disabled]="form.invalid">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container mt-5 d-flex justify-content-center mb-5 page-background">
+  <div class="card shadow w-xl-60 w-lg-70 w-md-80 w-sm-90 w-xs-100 card-background" *ngIf="groupDetails">
+    <div class="card-body">
+      <br />
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="card-title me-5">{{ groupDetails.name }} Group: Members and Expenses</h5>
+        <button class="btn btn-primary ms-5" (click)="createExpense()">Create New Expense</button>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-5"><strong>Name:</strong></div>
+        <div class="col-7">{{ groupDetails.name }}</div>
+      </div>
+      <hr class="translucent-line">
+      <div class="row">
+        <div class="col-5"><strong>Description:</strong></div>
+        <div class="col-7">{{ groupDetails.description }}</div>
+      </div>
+      <hr class="translucent-line">
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <h6>Members</h6>
+          <div *ngFor="let member of groupDetails.memberNames; let i = index">
+            <div class="row">
+              <div class="col-5"><strong>{{ member }}:</strong></div>
+              <div class="col-7">
+                <span *ngIf="groupDetails.memberDues[i] >= 0" class="badge bg-danger">Amount to Pay: {{ groupDetails.memberDues[i] | currency:'INR' }}</span>
+                <span *ngIf="groupDetails.memberDues[i] < 0" class="badge bg-success">Amount to Receive: {{ -groupDetails.memberDues[i] | currency:'INR' }}</span>
+              </div>
+            </div>
+            <hr class="translucent-line">
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <h6>Expenses</h6>
+          <div *ngFor="let expense of groupDetails.expenseDescriptions; let j = index"
+          (click)="goToExpense(groupDetails.expenseIds[j])"
+          style="cursor: pointer">
+            <div class="row">
+              <div class="col-5"><strong>{{ expense }}:</strong></div>
+              <div class="col-7"><span class="badge bg-info">Amount: {{ groupDetails.expenseAmounts[j] | currency:'INR' }}</span></div>
+            </div>
+            <hr class="translucent-line">
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-danger" (click)="deleteGroup()">Delete Group</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container mt-4" *ngIf="groupDetails">
+  <h1>{{ groupDetails.name }}</h1>
+  <p>{{ groupDetails.description }}</p>
+
+  <div class="mb-4">
+    <h2>Members</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let member of groupDetails.memberNames; let i = index">
+        {{ member }} - Dues: {{ groupDetails.memberDues[i] | currency : 'INR' }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-4">
+    <h2>Expenses</h2>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let expense of groupDetails.expenseDescriptions; let i = index"
+        (click)="goToExpense(groupDetails.expenseIds[i])"
+        style="cursor: pointer"
+      >
+        {{ expense }} - Amount: {{ groupDetails.expenseAmounts[i] | currency : 'INR' }}
+      </li>
+    </ul>
+  </div>
+
+  <button class="btn btn-primary" (click)="createExpense()">Create New Expense</button>
+</div> -->
